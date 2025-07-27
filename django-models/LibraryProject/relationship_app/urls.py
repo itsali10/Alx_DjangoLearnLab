@@ -1,6 +1,7 @@
 from django import views
 from django.urls import include, path
-from .views import admin_view, delete_book, edit_book, librarian_view, list_books, LibraryDetailView, member_view,add_book
+from .views import admin_view, delete_book, edit_book, librarian_view, LibraryDetailView, member_view,add_book
+from .views import list_books
 from django.urls import path
 from .views import LoginView, LogoutView
 from . import views
