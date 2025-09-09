@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+  <h1>All Blog Posts</h1>
+  {% for post in posts %}
+    <div class="post-snippet">
+      <h2><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h2>
+      <p>{{ post.content|truncatewords:30 }}</p>
+      <small>Published on {{ post.published_date }}</small>
+
+      <h4>Recent Comments</h4>
+      {% for comment in post.comments.all|slice:":2" %}
+        <div class="comment-preview">
+          <strong>{{ comment.author.username }}</strong>: {{ comment.content|truncatewords:10 }}
+        </div>
+      {% empty %}
+        <p>No comments yet.</p>
+      {% endfor %}
+      <a href="{% url 'post-detail' post.pk %}">View full post & comments</a>
+    </div>
+    <hr>
+  {% endfor %}
+{% endblock %}

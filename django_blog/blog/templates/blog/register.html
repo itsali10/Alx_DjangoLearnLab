@@ -1,0 +1,13 @@
+<!-- templates/registration/register.html -->
+{% extends "blog/base.html" %}
+{% block content %}
+  <h2>Register</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+  </form>
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+  {% endif %}
+{% endblock %}
